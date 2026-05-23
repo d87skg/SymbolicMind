@@ -1,0 +1,38 @@
+sin_d * o1_sq
+cos_d * o2_sq
+o1_sq * sin_d
+sin_d * o1_sq + cos_d * o2_sq
+o1_sq + o2_sq
+sin_d + cos_d
+o1_sq - o2_sq
+sin_t1 * o1_sq
+cos_t2 * o2_sq
+sin_d * o1_sq - cos_d
+o1_sq * sin_d + o2_sq
+sin_t1 + cos_t1
+sin_d * o2_sq
+cos_d + sin_d
+o1_sq * cos_t1
+sin_t1 * o2_sq
+cos_t1 * o1_sq
+sin_t2 * o1_sq
+cos_d * o1_sq + sin_d
+o1_sq * sin_t1 + o2_sq * cos_t1
+sin_d * o1_sq * o2_sq
+sin_d * sin_d
+cos_d * cos_d
+o1_sq * o1_sq
+o2_sq * o2_sq
+sin_d * o1_sq * o1_sq
+cos_d * o2_sq * o2_sq
+sin_d * cos_d
+sin_t1 * sin_d
+cos_t1 * cos_d
+sin_t2 * sin_d
+cos_t2 * cos_d
+o1_sq * sin_t1
+o2_sq * sin_t2
+o1_sq * cos_t1
+o2_sq * cos_t2
+sin_t1 * o1_sq + sin_t2 * o2_sq
+cos_t1 * o1_sq + cos_t2 * o2_sq
