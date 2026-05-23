@@ -1,0 +1,20 @@
+﻿{
+  "name": "symbolimind",
+  "version": "0.1.0",
+  "description": "AI-powered scientific equation discovery engine. Discovers governing equations from time-series data.",
+  "tools": [
+    {
+      "name": "discover_equation",
+      "description": "Discover governing equations from CSV data"
+    },
+    {
+      "name": "quickstart", 
+      "description": "Run quickstart demo to discover simple harmonic oscillator equation"
+    }
+  ],
+  "command": "python",
+  "args": ["D:/CDE/SymbolicMind/mcp_server.py"],
+  "repository": "https://github.com/d87skg/SymbolicMind",
+  "license": "MIT",
+  "categories": ["science", "physics", "data-analysis"]
+}

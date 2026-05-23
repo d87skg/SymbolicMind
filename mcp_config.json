@@ -1,0 +1,9 @@
+﻿{
+  "mcpServers": {
+    "symbolimind": {
+      "command": "python",
+      "args": ["D:/CDE/SymbolicMind/mcp_server.py"],
+      "description": "SymbolicMind - AI-powered scientific equation discovery engine"
+    }
+  }
+}

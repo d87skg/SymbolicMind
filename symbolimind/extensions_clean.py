@@ -338,7 +338,7 @@ def patch_pde_discovery():
         coeff, _, _, _ = np.linalg.lstsq(X, y, rcond=None)
         pred = X @ coeff
         r2 = 1 - np.sum((y - pred)**2) / np.sum((y - np.mean(y))**2)
-        significant = [(n, c) for n, c in zip(names, coeff) if abs(c) > 0.01 * max(1.0, max(abs(coeff)))]
+                significant = [(n, c) for n, c in zip(names, coeff) if abs(c) > 0.01 * max(1.0, max(abs(coeff))))]
         eq = ' + '.join([f'{c:.6f}*{n}' for n, c in significant])
         self.pde_result_ = {'equation': eq, 'r2': r2, 'all_coefficients': dict(zip(names, coeff))}
         return eq, r2
@@ -401,7 +401,7 @@ def patch_takens_embedding(taus=None):
             coeff_full[nonzero_mask] = coeff_selected
             pred = X_features @ coeff_full
             r2 = 1 - np.sum((y_target - pred)**2) / np.sum((y_target - np.mean(y_target))**2)
-            significant = [(n, c) for n, c in zip(f_names, coeff_full) if abs(c) > 0.005 * max((abs(coeff_full)))]
+            significant = [(n, c) for n, c in zip(f_names, coeff_full) if abs(c) > 0.005 * max(abs(coeff_full)))]
             eq = ' + '.join([f'{c:.4f}*{n}' for n, c in significant[:10]])
             results[t_name] = {'equation': eq, 'r2': r2, 'n_terms': len(significant)}
         self.takens_result_ = results
@@ -943,85 +943,7 @@ def apply_all_patches():
     patch_gp_structure_evolution()
     patch_physics_grammar()
     patch_diversity_governance()
-    patch_nn_proposal()
-    patch_grammar_constrained_generator()
-    patch_residual_analyzer()
-    patch_feature_pool_recommender()
-    patch_auto_evolution()
     print("[扩展] 所有增强补丁已加载")
-
-﻿# ========== 扩展20：特征池自动设计器 (AIRA-Compose 启发) ==========
-def patch_feature_pool_recommender():
-    """激活特征池自动设计器：NN 根据数据集特征推荐最优特征池组合"""
-    import torch
-    import torch.nn as nn
-    import numpy as np
-
-    class FeaturePoolRecommender(nn.Module):
-        def __init__(self, n_combos=7):
-            super().__init__()
-            self.net = nn.Sequential(
-                nn.Linear(n_combos, 64), nn.ReLU(), nn.Dropout(0.2),
-                nn.Linear(64, 32), nn.ReLU(), nn.Linear(32, n_combos), nn.Softmax(dim=1)
-            )
-            self.feature_combos = [
-                "多项式", "多项式+三角", "多项式+时滞",
-                "三角+时滞", "多项式+三角+时滞",
-                "多项式+三角+时滞+积分", "多项式+三角+时滞+积分+TV"
-            ]
-        def forward(self, x): return self.net(x)
-        def recommend(self, dataset_profile):
-            with torch.no_grad():
-                x = torch.tensor(dataset_profile, dtype=torch.float32).unsqueeze(0)
-                idx = self(x).argmax().item()
-            return self.feature_combos[idx]
-
-    CDE_V80.feature_recommender = FeaturePoolRecommender()
-    print("[扩展] 特征池自动设计器已激活")
-
-def unpatch_feature_pool_recommender():
-    if hasattr(CDE_V80, 'feature_recommender'): delattr(CDE_V80, 'feature_recommender')
-    print("[扩展] 特征池自动设计器已卸载")
-
-# ========== 扩展21：闭环自进化引擎 (AIRA 闭环启发) ==========
-def patch_auto_evolution(max_rounds=20, patience=5):
-    """激活闭环自进化引擎：自动循环生成→验证→保留/丢弃→再生成"""
-    import numpy as np
-
-    class AutoEvolutionEngine:
-        def __init__(self, generate_fn, evaluate_fn, max_rounds=max_rounds, patience=patience):
-            self.generate_fn = generate_fn
-            self.evaluate_fn = evaluate_fn
-            self.max_rounds = max_rounds
-            self.patience = patience
-            self.best_score = -np.inf
-            self.best_solution = None
-            self.no_improve = 0
-            self.history = []
-        def run(self, verbose=True):
-            for round_idx in range(self.max_rounds):
-                candidate = self.generate_fn()
-                score = self.evaluate_fn(candidate)
-                self.history.append((round_idx, candidate, score))
-                if score > self.best_score:
-                    self.best_score = score
-                    self.best_solution = candidate
-                    self.no_improve = 0
-                else:
-                    self.no_improve += 1
-                if verbose: print(f"第{round_idx+1}轮: R²={score:.4f}")
-                if self.no_improve >= self.patience:
-                    if verbose: print(f"连续{self.patience}轮无改善，自动停止")
-                    break
-            return self.best_solution, self.best_score
-
-    CDE_V80.auto_evolution = AutoEvolutionEngine
-    print(f"[扩展] 闭环自进化引擎已激活 (最多{max_rounds}轮, 耐心{patience}轮)")
-
-def unpatch_auto_evolution():
-    if hasattr(CDE_V80, 'auto_evolution'): delattr(CDE_V80, 'auto_evolution')
-    print("[扩展] 闭环自进化引擎已卸载")
-
 
 def remove_all_patches():
     unpatch_identity_detector()
