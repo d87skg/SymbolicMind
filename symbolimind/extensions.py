@@ -948,6 +948,7 @@ def apply_all_patches():
     patch_residual_analyzer()
     patch_feature_pool_recommender()
     patch_auto_evolution()
+    patch_period_discovery()
     print("[扩展] 所有增强补丁已加载")
 
 ﻿# ========== 扩展20：特征池自动设计器 (AIRA-Compose 启发) ==========
@@ -1018,7 +1019,9 @@ def patch_auto_evolution(max_rounds=20, patience=5):
     CDE_V80.auto_evolution = AutoEvolutionEngine
     print(f"[扩展] 闭环自进化引擎已激活 (最多{max_rounds}轮, 耐心{patience}轮)")
 
-def unpatch_auto_evolution():
+def unpatch_auto_evolution()
+    unpatch_period_discovery()
+    patch_period_discovery():
     if hasattr(CDE_V80, 'auto_evolution'): delattr(CDE_V80, 'auto_evolution')
     print("[扩展] 闭环自进化引擎已卸载")
 
