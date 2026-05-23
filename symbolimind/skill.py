@@ -11,8 +11,6 @@ import sys, io, json
 import numpy as np
 
 # ---- 自动加载 V8.1 扩展 ----
-from symbolimind.extensions import apply_all_patches
-apply_all_patches()
 
 from symbolimind.engine import CDE_V80
 from symbolimind.memory import CDEMemory

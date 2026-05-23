@@ -31,12 +31,48 @@ pip install numpy scipy scikit-learn
 pytest tests/
 
 提交信息规范
-使用中文或英文均可，格式：[类型] 描述
+格式：[类型] 描述
 
 类型：feat, fix, docs, test, refactor 等
+
+项目架构
+SymbolicMind/
+├── symbolimind/              # 核心引擎包（19项扩展）
+│   ├── engine.py             # BIC 精拟合 + P0 探测器
+│   ├── extensions.py         # 19 项固化扩展
+│   ├── unified.py            # 统一接口
+│   ├── skill.py              # AI 智能体工具接口
+│   ├── brain.py              # 自然语言大脑
+│   ├── memory.py             # 本地经验记忆库
+│   └── grammar.py            # Physics Grammar Engine
+├── tests/                    # 测试
+├── colab/                    # Google Colab notebook
+└── docs/                     # 文档
+
+制度层
+SymbolicMind 有三层不可修改的制度：
+
+制度	核心原则
+Scientific Constitution	可解释、可证伪、最小复杂度、NN不得裁决、残差优先视为未知规律
+Physics Grammar Engine	操作符深度≤3、奇异性过滤、量纲一致性
+Proposal Diversity Governance	30/30/30/10 多通道配额
+任何贡献必须遵守以上制度。
 
 行为准则
 我们致力于建设一个开放、友好的社区，请保持尊重和包容。
 
 许可证
 所有贡献将在 MIT 许可下进行。
+
+
+---
+
+## ✅ 四份文档全部交付
+
+| 文档 | 状态 |
+|------|------|
+| LIMITATIONS.md | ✅ 最终版已提供 |
+| STRATEGIC_REPORT.md | ✅ 最终版已提供 |
+| BENCHMARKS.md | ✅ 最终版已提供 |
+| CONTRIBUTING.md | ✅ 最终版已提供 |
+

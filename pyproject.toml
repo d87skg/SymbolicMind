@@ -1,4 +1,4 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.backends._legacy:_Backend"
 
@@ -8,9 +8,7 @@ version = "0.1.0"
 description = "AI-powered symbolic regression engine that discovers governing equations from data."
 readme = "README.md"
 license = {text = "MIT"}
-authors = [
-    {name = "Your Name", email = "your.email@example.com"}
-]
+authors = [{name = "SymbolicMind Team"}]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
@@ -24,11 +22,7 @@ classifiers = [
 ]
 keywords = ["symbolic-regression", "physics", "ai", "machine-learning", "science"]
 requires-python = ">=3.9"
-dependencies = [
-    "numpy",
-    "scipy",
-    "scikit-learn",
-]
+dependencies = ["numpy", "scipy", "scikit-learn"]
 
 [project.urls]
 Homepage = "https://github.com/d87skg/SymbolicMind"
