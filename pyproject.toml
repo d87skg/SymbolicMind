@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "symbolimind"
-version = "0.3.1"
+version = "0.3.3"
 description = "AI-powered symbolic regression engine that discovers governing equations from data."
 readme = "README.md"
 license = {text = "MIT"}
